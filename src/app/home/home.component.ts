@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  userName : String = "";
+
+
+  onSearch(){
+    console.log('Username provided: ', this.userName);
+  }
 
 }

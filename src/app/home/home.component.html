@@ -3,8 +3,8 @@
         <p>Your Gateway to GitHub: Instantly Access Public Repositories of Any User!</p>
         <p>Enter a GitHub username to unlock their public repositories:</p>
         <div>
-            <input type="text" placeholder="Enter Username">
-            <button>Search</button>
+            <input type="text" placeholder="Enter Username" [(ngModel)]="userName">
+            <button (click)="onSearch()">Search</button>
         </div>
     </div>
 </div>
