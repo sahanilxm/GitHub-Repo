@@ -5,20 +5,29 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from  '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { ProfileComponent } from './home/profile/profile.component';
+import { ProfileComponent } from './home/user/profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { UserComponent } from './home/user/user.component';
+
+const routes : Routes = [
+  { path: '', component: HomeComponent},
+  { path: 'user/:name', component: UserComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
