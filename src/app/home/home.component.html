@@ -1,10 +1,13 @@
-<div>
-    <div>
-        <p>Your Gateway to GitHub: Instantly Access Public Repositories of Any User!</p>
-        <p>Enter a GitHub username to unlock their public repositories:</p>
+<div class="flex items-center justify-center min-h-screen w-full">
+    <div class="text-center">
+        <div class="text-lg break-all leading-relaxed text-primary font-bold">
+            <p>Your Gateway to GitHub</p>
+            <p>Instantly Access Public Repositories of Any GitHub User!</p>
+        </div>
         <div>
-            <input type="text" placeholder="Enter Username" [(ngModel)]="userName">
-            <button (click)="onSearch()">Search</button>
+            <label for="username" class="block text-2xl text-secondary">Enter GitHub Username:</label>
+            <input type="text" placeholder="Enter Username" [(ngModel)]="userName" class="block mx-auto mt-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary">
+            <button (click)="onSearch()" class="block mx-auto px-4 py-2 font-semibold rounded-md border my-2">Search</button>
         </div>
     </div>
 </div>
