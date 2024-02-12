@@ -9,6 +9,7 @@ import { ProfileComponent } from './home/user/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './home/user/user.component';
+import { ReposComponent } from './home/user/repos/repos.component';
 
 const routes : Routes = [
   { path: '', component: HomeComponent},
@@ -21,7 +22,8 @@ const routes : Routes = [
     HomeComponent,
     HeaderComponent,
     ProfileComponent,
-    UserComponent
+    UserComponent,
+    ReposComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,28 @@
+<div>
+    <div *ngFor="let repo of repos">
+        <div>
+            <hr>
+            <div>
+                <p><a href={{repo.repoLink}}>{{repo.name}}</a></p>
+            </div>
+            <div>
+                <p>{{repo.description}}</p>
+                <ul>
+                    <li *ngFor="let topic of repo.topics">{{topic}}</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div>
+        <button (click)="onPrev()">Previous</button>
+        <span>Page: {{currentPage}}</span>
+        <button (click)="onNext()">Next</button>
+        <select #selection (change)="onSelectionChange(selection.value)">
+            <option value="10">10 per page</option>
+            <option value="20">20 per page</option>
+            <option value="50">50 per page</option>
+            <option value="100">100 per page</option>
+        </select>
+    </div>
+</div>

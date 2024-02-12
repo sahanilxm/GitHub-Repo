@@ -1,36 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent{
 
-  constructor (private apiService : ApiService) {}
-  
-  @Input() userName : any;
+  constructor () {}
 
-  data : any;
-  imageURL : string = "";
-  name : string = "";
-  bio: string = "";
-  publicRepos : number = 0;
-  gitHub_link : string = "";
-
-  ngOnInit(): void {
-    if(this.userName != ""){
-      this.apiService.getUser(this.userName).subscribe((profile) => {
-        this.data = profile;
-
-        this.imageURL = this.data.avatar_url;
-        this.name = this.data.name;
-        this.bio = this.data.bio;
-        this.publicRepos = this.data.public_repos;
-        this.gitHub_link = this.data.html_url;
-      })
-    }
-  }
+  @Input() imageURL : any;
+  @Input() name : any;
+  @Input() bio: any
+  @Input() publicRepos : any;
+  @Input() gitHub_link : any;
 
 }

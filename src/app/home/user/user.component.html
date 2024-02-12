@@ -1,5 +1,6 @@
 <div>
     <div>
-        <app-profile [userName]="userName"></app-profile>
+        <app-profile [imageURL]="imageURL" [name]="name" [bio]="bio" [publicRepos]="publicRepos" [gitHub_link]="gitHub_link"></app-profile>
+        <app-repos [totalRepos]="publicRepos" [userName]="userName"></app-repos>
     </div>
 </div>
