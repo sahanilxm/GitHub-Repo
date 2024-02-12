@@ -1,13 +1,13 @@
 <div>
-    <div>
+    <div class="flex">
         <div>
-            <img src={{imageURL}}>
+            <img src={{imageURL}} class="rounded-full w-48">
         </div>
-        <div>
-            <p>{{name}}</p>
+        <div class="space-y-2 text-secondary m-4 text-center">
+            <p class="font-bold text-primary">{{name}}</p>
             <p>{{bio}}</p>
-            <p>{{publicRepos}}</p>
-            <p><a href={{gitHub_link}} target="_blank">GitHub Link</a></p>
+            <p>Total Public Repositories: {{publicRepos}}</p>
+            <p><a href={{gitHub_link}} target="_blank" class="text-lg underline">GitHub Link</a></p>
         </div>
     </div>
 </div>
