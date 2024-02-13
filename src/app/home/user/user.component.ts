@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-
+import { from } from 'rxjs';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -26,15 +26,16 @@ export class UserComponent {
     this.route.params.subscribe(params => {
       this.userName = params['name'];
       console.log(this.userName);
-      this.apiService.getUser(this.userName).subscribe((profile) => {
+      from(this.apiService.getUser(this.userName)).subscribe((profile) => {
         this.data = profile;
-
+    
         this.imageURL = this.data.avatar_url;
         this.name = this.data.name;
         this.bio = this.data.bio;
         this.publicRepos = this.data.public_repos;
+        console.log(this.publicRepos);
         this.gitHub_link = this.data.html_url;
-      })
+      });
     })
   }
 

@@ -1,24 +1,27 @@
-<div>
-    <div *ngFor="let repo of repos">
-        <div>
-            <hr>
-            <div>
-                <p><a href={{repo.repoLink}}>{{repo.name}}</a></p>
-            </div>
-            <div>
-                <p>{{repo.description}}</p>
-                <ul>
-                    <li *ngFor="let topic of repo.topics">{{topic}}</li>
-                </ul>
+<div class="text-center mt-4">
+    <div class="flex flex-wrap mx-auto justify-around px-4 w-full">
+        <div *ngFor="let repo of repos" class="border-solid border-2 rounded-md m-2 p-2 w-1/4" >
+            <div class="space-y-5">
+                <div>
+                    <p><a href={{repo.repoLink}} class="underline">{{repo.name}} 🔗</a></p>
+                </div>
+                <div>
+                    <p>{{repo.description ? repo.description : "No description"}}</p>
+                    <hr>
+                    <div class="flex flex-wrap">
+                        <div *ngFor="let topic of repo.topics">
+                            <button class="border-2 rounded-md m-1 p-1" disabled>{{topic}}</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <hr>
     </div>
-    <div>
-        <button (click)="onPrev()">Previous</button>
-        <span>Page: {{currentPage}}</span>
-        <button (click)="onNext()">Next</button>
-        <select #selection (change)="onSelectionChange(selection.value)">
+    <div class="space-x-2 mt-16">
+        <button (click)="onPrev()" class="border rounded-md p-2" [disabled]="currentPage == 1">Previous</button>
+        <span class="border rounded-md p-2">Page: {{currentPage}}</span>
+        <button (click)="onNext()" class="border rounded-md p-2" [disabled]="currentPage == totalPage">Next</button>
+        <select #selection (change)="onSelectionChange(selection.value)" class="border rounded-md p-2">
             <option value="10">10 per page</option>
             <option value="20">20 per page</option>
             <option value="50">50 per page</option>

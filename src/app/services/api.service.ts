@@ -12,14 +12,26 @@ export class ApiService {
     private httpClient: HttpClient
   ) { }
 
-  getUser(githubUsername: string) {
-
-    return this.httpClient.get(`https://api.github.com/users/${githubUsername}`);
+  async getUser(githubUsername: string) {
+    try {
+      const data = await this.httpClient.get<any>(`https://api.github.com/users/${githubUsername}`).toPromise();
+      return data;
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      throw error;
+    }
   }
 
 
-  getRepos(githubUsername: string, searchKeyword: string, page: number, perPage: number, maxPerPage: number){
-    return this.httpClient.get(`https://api.github.com/search/repositories?q=${searchKeyword}+user:${githubUsername}&page=${page}&per_page=${Math.min(perPage, maxPerPage)}`);
+  async getRepos(githubUsername: string, searchKeyword: string, page: number, perPage: number, maxPerPage: number){
+    try {
+      const url = `https://api.github.com/search/repositories?q=${searchKeyword}+user:${githubUsername}&page=${page}&per_page=${Math.min(perPage, maxPerPage)}`;
+      const data = await this.httpClient.get<any>(url).toPromise();
+      return data;
+    } catch (error) {
+      console.error('Error searching repositories:', error);
+      throw error;
+    }
   }
 
 }
