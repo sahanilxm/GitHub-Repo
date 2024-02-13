@@ -3,7 +3,7 @@ import { Component, Input} from '@angular/core';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['../../../../styles.css']
+  styleUrls: ['../../../../styles.css',]
 })
 export class ProfileComponent{
 
