@@ -5,7 +5,7 @@ import { from } from 'rxjs';
 @Component({
   selector: 'app-repos',
   templateUrl: './repos.component.html',
-  styleUrls: ['./repos.component.scss']
+  styleUrls: ['./repos.component.scss', '../../../../styles.scss']
 })
 export class ReposComponent implements OnInit, OnChanges{
   @Input() publicRepos: number = 0;
