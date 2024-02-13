@@ -1,3 +1,136 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Changa:wght@200..800&family=Kosugi+Maru&display=swap");
+
+:root {
+  --primary-color: #fe7a36;
+  --secondary-color: #191d88;
+
+  --primary-font: "Acme", sans-serif;
+  --secondary-font: "Kosugi Maru", sans-serif;
+  --helper-font: "Changa", sans-serif;
+}
+
+.primary-text {
+  font-family: var(--primary-font);
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.secondary-text {
+  font-family: var(--secondary-font);
+  color: var(--secondary-color);
+}
+
+.helper-text {
+  font-family: var(--helper-font);
+  color: var(--secondary-color);
+  font-weight: bolder;
+}
+
+.primary-btn {
+  font-family: var(--primary-font);
+  color: white;
+  background-color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-size: large;
+  margin-top: 1rem;
+  border-color: var(--secondary-color);
+  border-radius: 0.5rem;
+}
+
+.primary-btn:enabled:hover {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
+
+.secondary-btn {
+  font-family: var(--primary-font);
+  color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-size: large;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  border-color: var(--secondary-color);
+}
+
+.primary-input {
+  font-family: var(--primary-font);
+  font-size: 1.5rem;
+  text-align: center;
+  border: 0.2rem solid var(--secondary-color);
+  border-radius: 0.5rem;
+}
+
+.repo {
+  border: 0.2rem solid var(--secondary-color);
+  border-radius: 0.5rem;
+}
+
+.nav {
+  background: linear-gradient(to right, #ffddb0, #fff2df);
+  border: none;
+}
+
+.logo {
+  text-decoration-line: none;
+  font-size: 2rem;
+  border: none;
+}
+
+.logo:hover {
+  color: var(--primary-color);
+}
+
+@media screen and (max-width: 900px) {
+  .repository {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #profile-container {
+    display: block;
+    font-size: medium;
+  }
+  .repository {
+    width: 100%;
+  }
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to right, #ffddb0, #fff2df);
+}
+
+.shimmer {
+  position: relative;
+}
+.shimmer::after {
+  content: "";
+//   border: round($number: 100);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    -45deg,
+    #f0f0f0 25%,
+    #e4e4e4 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmerAnimation 2s infinite;
+}
+@keyframes shimmerAnimation {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}

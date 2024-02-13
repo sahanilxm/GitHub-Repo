@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { from } from 'rxjs';
 
@@ -7,33 +7,38 @@ import { from } from 'rxjs';
   templateUrl: './repos.component.html',
   styleUrls: ['./repos.component.scss']
 })
-export class ReposComponent implements OnInit{
-  @Input() publicRepos : any;
-  @Input() userName : any;
+export class ReposComponent implements OnInit, OnChanges{
+  @Input() publicRepos: number = 0;
+  @Input() userName: any;
 
   // Repos Details
-  defaultPerPage : number = 10;
-  maxPerPage : number = 100;
-  currentPage : number = 1;
-  perPage : number = this.defaultPerPage;
-  totalPage : number = 0;
-  searchKeyword : string = "";
+  defaultPerPage: number = 10;
+  maxPerPage: number = 100;
+  currentPage: number = 1;
+  perPage: number = this.defaultPerPage;
+  totalPage: number = 1;
+  searchKeyword: string = "";
 
-  repos : any;
+  repos: any;
 
+  constructor(private apiService: ApiService) {}
 
-  constructor(private apiService : ApiService) {}
-
-  ngOnInit() : void {
-    this.fetchRepos();
+  ngOnInit(): void {
+    this.fetchRepos(); // Assuming fetchRepos() function fetches repos based on initialized properties
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['publicRepos']) {
+      this.publicRepos = changes['publicRepos'].currentValue;
+      this.totalPage = Math.ceil(1.0 * this.publicRepos / this.perPage);
+    }
+  }
+  
+
   fetchRepos() : void{
-    console.log(this.publicRepos);
-    this.totalPage = Math.ceil(1.0 * this.publicRepos / this.perPage);
-    from(this.apiService.getRepos(this.userName, this.searchKeyword, this.currentPage, this.perPage, this.maxPerPage)).subscribe((repos) => {
+    from(this.apiService.getRepos(this.userName, this.searchKeyword, this.currentPage, this.perPage, this.maxPerPage, this.currentPage, this.totalPage)).subscribe((repos) => {
       this.repos = repos;
-      console.log(this,repos);
+      console.log(this.repos);
       this.repos = this.repos.items;
     });
   }
@@ -51,6 +56,10 @@ export class ReposComponent implements OnInit{
 
   onNext(){
     this.currentPage += 1;
+    this.fetchRepos();
+  }
+
+  searchRepositories(){
     this.fetchRepos();
   }
 

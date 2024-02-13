@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './home/user/user.component';
 import { ReposComponent } from './home/user/repos/repos.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProfileShimmerComponent } from './home/user/profile/profile-shimmer/profile-shimmer.component';
 
 const routes : Routes = [
   { path: '', component: HomeComponent},
@@ -25,7 +26,8 @@ const routes : Routes = [
     ProfileComponent,
     UserComponent,
     ReposComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileShimmerComponent
   ],
   imports: [
     BrowserModule,

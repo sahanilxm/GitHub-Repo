@@ -12,7 +12,7 @@ export class ApiService {
     private httpClient: HttpClient
   ) { }
 
-  async getUser(githubUsername: string) {
+  async getUser(githubUsername: string) : Promise<any> {
     try {
       const data = await this.httpClient.get<any>(`https://api.github.com/users/${githubUsername}`).toPromise();
       return data;
@@ -23,9 +23,10 @@ export class ApiService {
   }
 
 
-  async getRepos(githubUsername: string, searchKeyword: string, page: number, perPage: number, maxPerPage: number){
+  async getRepos(githubUsername: string, searchKeyword: string, page: number, perPage: number, maxPerPage: number, currentPage : number, totalPage : number) : Promise<any>{
     try {
-      const url = `https://api.github.com/search/repositories?q=${searchKeyword}+user:${githubUsername}&page=${page}&per_page=${Math.min(perPage, maxPerPage)}`;
+      let url = `https://api.github.com/search/repositories?q=${searchKeyword}+user:${githubUsername}&page=${page}&per_page=${Math.min(perPage, maxPerPage)}`;
+      console.log(url);
       const data = await this.httpClient.get<any>(url).toPromise();
       return data;
     } catch (error) {

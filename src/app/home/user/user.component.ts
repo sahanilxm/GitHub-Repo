@@ -10,7 +10,7 @@ import { from } from 'rxjs';
 export class UserComponent {
 
   userName : string = "";
-  data : any;
+  data : any = null;
 
   // Profile Details
   imageURL : string = "";
@@ -20,7 +20,9 @@ export class UserComponent {
   gitHub_link : string = "";
 
 
-  constructor(private route : ActivatedRoute, private apiService : ApiService) {}
+  constructor(private route : ActivatedRoute, private apiService : ApiService) {
+    this.publicRepos = this.data?.public_repos;
+  }
 
   ngOnInit() : void {
     this.route.params.subscribe(params => {

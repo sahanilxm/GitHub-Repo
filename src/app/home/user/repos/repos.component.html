@@ -1,16 +1,20 @@
 <div class="text-center mt-4">
+    <div class="text-center mt-4 mb-4" id="search-container">
+        <label for="search" class="fs-3 secondary-text">Search Repositories:</label>
+        <input type="text" placeholder="Enter keyword" class="ml-2 primary-input" [(ngModel)]="searchKeyword">
+        <button (click)="searchRepositories()" class="primary-btn ml-2" >Search</button>
+    </div>
     <div class="flex flex-wrap mx-auto justify-around px-4 w-full">
-        <div *ngFor="let repo of repos" class="border-solid border-2 rounded-md m-2 p-2 w-1/4" >
+        <div *ngFor="let repo of repos" class="border-solid border-2 rounded-md m-2 p-2 w-1/4 repository repo" >
             <div class="space-y-5">
                 <div>
-                    <p><a href={{repo.repoLink}} class="underline">{{repo.name}} 🔗</a></p>
+                    <p><a href={{repo.repoLink}} class="underline primary-text">{{repo.name}} 🔗</a></p>
                 </div>
                 <div>
-                    <p>{{repo.description ? repo.description : "No description"}}</p>
-                    <hr>
+                    <p class="helper-text">{{repo.description ? repo.description : "No description"}}</p>
                     <div class="flex flex-wrap">
                         <div *ngFor="let topic of repo.topics">
-                            <button class="border-2 rounded-md m-1 p-1" disabled>{{topic}}</button>
+                            <button class="border-2 rounded-md m-1 p-1 secondary-btn" disabled>{{topic}}</button>
                         </div>
                     </div>
                 </div>
@@ -18,10 +22,10 @@
         </div>
     </div>
     <div class="space-x-2 mt-16">
-        <button (click)="onPrev()" class="border rounded-md p-2" [disabled]="currentPage == 1">Previous</button>
-        <span class="border rounded-md p-2">Page: {{currentPage}}</span>
-        <button (click)="onNext()" class="border rounded-md p-2" [disabled]="currentPage == totalPage">Next</button>
-        <select #selection (change)="onSelectionChange(selection.value)" class="border rounded-md p-2">
+        <button (click)="onPrev()" class="border rounded-md p-2 primary-btn" [disabled]="currentPage == 1">Previous</button>
+        <span class="p-2">Page: {{currentPage}}</span>
+        <button (click)="onNext()" class="border rounded-md p-2 primary-btn" [disabled]="currentPage == totalPage">Next</button>
+        <select #selection (change)="onSelectionChange(selection.value)" class="border rounded-md p-2 secondary-btn">
             <option value="10">10 per page</option>
             <option value="20">20 per page</option>
             <option value="50">50 per page</option>
