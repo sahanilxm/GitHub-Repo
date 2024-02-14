@@ -12,6 +12,7 @@ import { UserComponent } from './home/user/user.component';
 import { ReposComponent } from './home/user/repos/repos.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfileShimmerComponent } from './home/user/profile/profile-shimmer/profile-shimmer.component';
+import { ReposShimmerComponent } from './home/user/repos/repos-shimmer/repos-shimmer.component';
 
 const routes : Routes = [
   { path: '', component: HomeComponent},
@@ -27,7 +28,8 @@ const routes : Routes = [
     UserComponent,
     ReposComponent,
     FooterComponent,
-    ProfileShimmerComponent
+    ProfileShimmerComponent,
+    ReposShimmerComponent
   ],
   imports: [
     BrowserModule,

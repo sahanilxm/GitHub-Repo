@@ -1,0 +1,24 @@
+<div class="mt-12">
+    <div class="flex justify-center">
+        <div class="h-10 bg-gray-400 border-2 w-56 shimmer rounded-md"></div>
+        <div class="h-10 bg-gray-400 border-2 w-72 ml-2 shimmer rounded-md"></div>
+        <div class="h-10 bg-gray-400 border-2 w-24 rounded-md ml-2 shimmer " ></div>
+    </div>
+    <div class="flex flex-wrap justify-center mt-8">
+        <div class="border-2 rounded-md m-2 p-2 w-1/4" *ngFor="let index of reposIteration">
+            <div class="space-y-5">
+                <div>
+                    <div class="h-8 bg-gray-400 shimmer rounded-md"></div>
+                </div>
+                <div>
+                    <div class="h-40 bg-gray-400 shimmer rounded-md"></div>
+                    <div class="flex flex-wrap justify-center mt-2">
+                        <div *ngFor="let index of tagIteration">
+                            <div class=" shimmer border-2 rounded-md bg-gray-400 h-8 w-16 ml-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

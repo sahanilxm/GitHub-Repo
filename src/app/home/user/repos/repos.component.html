@@ -1,4 +1,6 @@
-<div class="text-center mt-4">
+<app-repos-shimmer *ngIf="loading"></app-repos-shimmer>
+
+<div class="text-center mt-4" *ngIf="!loading">
     <div class="text-center mt-4 mb-4" id="search-container">
         <label for="search" class="fs-3 secondary-text">Search Repositories:</label>
         <input type="text" placeholder="Enter keyword" class="ml-2 primary-input" [(ngModel)]="searchKeyword">
@@ -8,7 +10,7 @@
         <div *ngFor="let repo of repos" class="border-solid border-2 rounded-md m-2 p-2 w-1/4 repository repo" >
             <div class="space-y-5">
                 <div>
-                    <p><a href={{repo.repoLink}} class="underline primary-text">{{repo.name}} 🔗</a></p>
+                    <p><a href={{repo.html_url}} target="_blank" class="underline primary-text">{{repo.name}} 🔗</a></p>
                 </div>
                 <div>
                     <p class="helper-text">{{repo.description ? repo.description : "No description"}}</p>

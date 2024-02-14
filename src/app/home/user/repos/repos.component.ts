@@ -11,6 +11,8 @@ export class ReposComponent implements OnInit, OnChanges{
   @Input() publicRepos: number = 0;
   @Input() userName: any;
 
+  loading: boolean = true;
+
   // Repos Details
   defaultPerPage: number = 10;
   maxPerPage: number = 100;
@@ -24,7 +26,7 @@ export class ReposComponent implements OnInit, OnChanges{
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.fetchRepos(); // Assuming fetchRepos() function fetches repos based on initialized properties
+    this.fetchRepos(); 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -40,26 +42,34 @@ export class ReposComponent implements OnInit, OnChanges{
       this.repos = repos;
       console.log(this.repos);
       this.repos = this.repos.items;
+      this.publicRepos = this.repos.total_count;
+
+      console.log(this.repos.gitHub_link);
+      this.loading = false;
     });
   }
 
   onSelectionChange(value : string) : void{
+    this.loading = true;
     this.perPage = parseInt(value);
     this.currentPage = 1;
     this.fetchRepos();
   }
 
   onPrev(){
+    this.loading = true;
     this.currentPage -= 1;
     this.fetchRepos();
   }
 
   onNext(){
+    this.loading = true;
     this.currentPage += 1;
     this.fetchRepos();
   }
 
   searchRepositories(){
+    this.loading = true;
     this.fetchRepos();
   }
 
