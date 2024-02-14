@@ -32,8 +32,8 @@ export class UserComponent {
         this.data = profile;
     
         this.imageURL = this.data.avatar_url;
-        this.name = this.data.name;
-        this.bio = this.data.bio;
+        this.name = this.data.name ? this.data.name : this.userName;
+        this.bio = this.data.bio ? this.data.bio : "GitHub User";
         this.publicRepos = this.data.public_repos;
         console.log(this.publicRepos);
         this.gitHub_link = this.data.html_url;
